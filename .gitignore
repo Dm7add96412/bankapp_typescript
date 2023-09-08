@@ -1,6 +1,6 @@
 package-lock.json
 yarn.lock
-build/
-node_modules/
+/build
+/node-modules
 .vscode/
 *.js
