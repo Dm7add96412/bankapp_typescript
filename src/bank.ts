@@ -1,5 +1,5 @@
-
 import { Branch } from "./branch"
+import { Customer } from "./customer"
 
 export class Bank {
     private _name: string
@@ -17,30 +17,32 @@ export class Bank {
         return this._name
     }
     addBranch(branch: Branch) {
-        if (this._branches.find(b => b === branch)) {
+        if (this._branches.includes(branch)) {
             return false
         } else {
             if (this._branches.push(branch)) {
+                console.log(this._branches)
                 return true
             } else {
                 console.log("error with adding branch")
             }       
         }
     }
-    addCustomer(branch: Branch, customer: string) {
-        if (this._branches.find(b => b === branch)) {
-
+    addCustomer(branch: Branch, customer: Customer) {
+        const foundBranch = this._branches.find(b => b === branch)
+        if (foundBranch) {
+            foundBranch.addCustomer(customer)
+            return true
+        } else {
+            return false
         }
     }
     addCustomerTransaction(branch: Branch, customerId: string, amount: number) {
         return true
     }
     findBranchByName(name: string) {
-        if (this._branches.map(b => b.name === name)) {
-            return this._branches.map(b => b.name === name)
-        } else {
-            return null
-        }
+        const foundBranch = this._branches.find(b => b.name.toLowerCase().includes(name.toLowerCase()))
+        return foundBranch ? foundBranch : null
     }
     checkBranch(branch: Branch) {
         if (this._branches.find(b => b === branch)) {

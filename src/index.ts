@@ -9,21 +9,23 @@ const customer1 = new Customer("John")
 const customer2 = new Customer("Anna")
 const customer3 = new Customer("John")
 
-// console.log(arizonaBank.name)
-// console.log(westBranch.name)
-// console.log(customer1.id)
+console.log(arizonaBank.name)
+console.log(westBranch.name)
+console.log(customer1.id)
 
 arizonaBank.addBranch(westBranch)
 arizonaBank.addBranch(sunBranch)
 arizonaBank.addBranch(westBranch)
 
-arizonaBank.findBranchByName("bank")
-arizonaBank.findBranchByName("sun")
+console.log(arizonaBank.findBranchByName("bank"))
+console.log(arizonaBank.findBranchByName("sun"))
 
-// arizonaBank.addCustomer(westBranch, customer1)
-// arizonaBank.addCustomer(westBranch, customer3)
-// arizonaBank.addCustomer(sunBranch, customer1)
-// arizonaBank.addCustomer(sunBranch, customer2)
+arizonaBank.addCustomer(westBranch, customer1)
+arizonaBank.addCustomer(westBranch, customer3)
+arizonaBank.addCustomer(sunBranch, customer1)
+arizonaBank.addCustomer(sunBranch, customer2)
+
+console.log(arizonaBank.checkBranch(westBranch))
 
 // arizonaBank.addCustomerTransaction(westBranch, customer1.id, 3000)
 // arizonaBank.addCustomerTransaction(westBranch, customer1.id, 2000)
