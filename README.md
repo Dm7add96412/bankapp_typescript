@@ -1,7 +1,7 @@
-# TypeScript Assignment
+# TypeScript - Banking app - exercise 4
 
-- Complete the challenge: banking application
-- Check the scripts in `package.json` to run the suitable command for each challenge
+- Banking app created with the requirements mentioned below
+- Check the scripts in `package.json` and installation at the end of this document
 
 ## Create a simple banking application
 
@@ -71,41 +71,7 @@ Implement the following classes, interface, and codes (you can decide which file
 
    - It has 2 properties, a number `amount`, and a Date called `date`. `date` refers to the time that transaction has been created.
 
-Run the following codes in `index.ts`and share your results and findings in the Slack channel
-
-```
-const arizonaBank = new Bank("Arizona")
-const westBranch = new Branch("West Branch")
-const sunBranch = new Branch("Sun Branch")
-const customer1 = new Customer("John")
-const customer2 = new Customer("Anna")
-const customer3 = new Customer("John")
-
-arizonaBank.addBranch(westBranch)
-arizonaBank.addBranch(sunBranch)
-arizonaBank.addBranch(westBranch)
-
-arizonaBank.findBranchByName("bank")
-arizonaBank.findBranchByName("sun")
-
-arizonaBank.addCustomer(westBranch, customer1)
-arizonaBank.addCustomer(westBranch, customer3)
-arizonaBank.addCustomer(sunBranch, customer1)
-arizonaBank.addCustomer(sunBranch, customer2)
-
-arizonaBank.addCustomerTransaction(westBranch, customer1.id, 3000)
-arizonaBank.addCustomerTransaction(westBranch, customer1.id, 2000)
-arizonaBank.addCustomerTransaction(westBranch, customer2.id, 3000)
-
-customer1.addTransactions(-1000)
-console.log(customer1.balance)
-console.log(arizonaBank.listCustomers(westBranch, true))
-console.log(arizonaBank.listCustomers(sunBranch,true))
-```
-
-You can add more codes to check the functionality and security of your banking system
-
 ## Installation
 
-1. After clone the project from your forked repo, run `npm install`
+1. After clone the project from your forked repo, run `npm install` and `npm i --save-dev ts-node nodemon`
 2. Run `npm run watch` to see code running in watch mode, or check `package.json` for extra scripts

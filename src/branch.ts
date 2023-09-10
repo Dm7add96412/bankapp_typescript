@@ -13,7 +13,7 @@ export class Branch {
     get name() {
         return this._name
     }
-    get customer() {
+    get customers() {
         return this._customers
     }
 
@@ -29,8 +29,14 @@ export class Branch {
             }
         }
     }
-    addCustomerTransaction(id: string, amount: number) {
-        return true
+    addCustomerTransaction(customerId: string, amount: number) {
+        const customer = this.findCustomer(customerId)
+        if (customer) {
+            return customer.addTransaction(amount)
+        } else {
+            return false
+        }
+        
     }
     findCustomer(id: string) {
         if (this._customers.find(c => c.id === id )) {

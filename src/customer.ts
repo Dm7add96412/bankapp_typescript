@@ -5,15 +5,20 @@ export interface Transaction {
 
 export class Customer {
     private _name: string
-    private _id: string = '1'
+    private _id: string
     private _transactions: Transaction[]
 
     constructor(name: string) {
         this._name = name
         this._transactions = []
-        this._id
+        this._id = this.generateUniqueId()
     }
 
+    private generateUniqueId(): string {
+        const timestamp = Date.now().toString(16)
+        const randomPart = Math.floor(Math.random() * 1000000).toString(16)
+        return timestamp + randomPart
+    }
     get name() {
         return this._name
     }
@@ -24,9 +29,23 @@ export class Customer {
         return this._transactions
     }
     get balance() {
-        return true
+        let sum = 0
+        this._transactions.forEach(e => {
+            sum += e.amount
+        })
+        return sum
     }
     addTransaction(amount: number) {
-        return true
+        const transaction = {
+            amount: amount,
+            date: new Date()
+        }
+        let cbalance = this.balance
+        if (cbalance + amount >= 0) {
+            this._transactions.push(transaction)
+            return true
+        } else {
+            return false
+        }
     }
 }
