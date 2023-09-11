@@ -38,9 +38,10 @@ export class Branch {
         }
         
     }
-    findCustomer(id: string) {
-        if (this._customers.find(c => c.id === id )) {
-            return this._customers.find(c => c.id === id)
+    findCustomer(id: string): Customer | null {
+        const customer = this._customers.find(c => c.id === id )
+        if (customer !== undefined) {
+            return customer
         } else {
             return null
         }
