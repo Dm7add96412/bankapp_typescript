@@ -28,14 +28,14 @@ export class Customer {
     get transaction() {
         return this._transactions
     }
-    get balance() {
+    get balance(): number {
         let sum = 0
         this._transactions.forEach(e => {
             sum += e.amount
         })
         return sum
     }
-    addTransaction(amount: number) {
+    addTransaction(amount: number): true | false {
         const transaction = {
             amount: amount,
             date: new Date()

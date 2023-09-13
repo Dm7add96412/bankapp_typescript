@@ -16,24 +16,23 @@ export class Bank {
     get name() {
         return this._name
     }
-    addBranch(branch: Branch) {
-        if (this._branches.includes(branch)) {
+    addBranch(branch: Branch): true | false {
+        if (this.checkBranch(branch)) {
             return false
         } else {
             if (this._branches.push(branch)) {
-                // console.log(this._branches)
                 return true
             } else {
                 console.log("error with adding branch")
+                return false
             }       
         }
     }
-    addCustomer(branch: Branch, customer: Customer) {
-        const foundBranch = this._branches.find(b => b === branch)
+    addCustomer(branch: Branch, customer: Customer): true | false {
         const id = customer.id
-        if (foundBranch) {
-            if (!foundBranch.findCustomer(id)) {
-                foundBranch.addCustomer(customer)
+        if (this.checkBranch(branch)) {
+            if (!branch.findCustomer(id)) {
+                branch.addCustomer(customer)
                 return true
             } else {
                 return false
@@ -42,7 +41,7 @@ export class Bank {
             return false
         }
     }
-    addCustomerTransaction(branch: Branch, customerId: string, amount: number) {
+    addCustomerTransaction(branch: Branch, customerId: string, amount: number): true | false {
         const customer = branch.findCustomer(customerId)
         if (customer) {
             return customer.addTransaction(amount)
@@ -50,19 +49,19 @@ export class Bank {
             return false
         }
     }
-    findBranchByName(name: string) {
-        const foundBranch = this._branches.find(b => b.name.toLowerCase().includes(name.toLowerCase()))
+    findBranchByName(name: string): Branch[] | null {
+        const foundBranch = this._branches.filter(b => b.name.toLowerCase().includes(name.toLowerCase()))
         return foundBranch ? foundBranch : null
     }
-    checkBranch(branch: Branch) {
+    checkBranch(branch: Branch): true | false {
         if (this._branches.find(b => b === branch)) {
             return true
         } else {
             return false
         }
     }
-    listCustomers(branch: Branch, boolean: boolean) {
-        if (this._branches.find(b => b === branch)) {
+    listCustomers(branch: Branch, boolean: boolean): true | false {
+        if (this.checkBranch(branch)) {
             if (boolean) {
                 branch.customers.forEach(e => {
                     console.log(e)

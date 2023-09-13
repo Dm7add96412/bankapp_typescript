@@ -1,5 +1,4 @@
 import { Customer } from "./customer"
-import { Transaction } from "./customer"
 
 export class Branch {
     private _name: string
@@ -17,8 +16,8 @@ export class Branch {
         return this._customers
     }
 
-    addCustomer(customer: Customer) {
-        if (this._customers.find(c => c === customer )) {
+    addCustomer(customer: Customer): true | false {
+        if (this.findCustomer(customer.id)) {
             return false
         } else {
             try {
@@ -29,14 +28,13 @@ export class Branch {
             }
         }
     }
-    addCustomerTransaction(customerId: string, amount: number) {
+    addCustomerTransaction(customerId: string, amount: number): true | false {
         const customer = this.findCustomer(customerId)
         if (customer) {
             return customer.addTransaction(amount)
         } else {
             return false
         }
-        
     }
     findCustomer(id: string): Customer | null {
         const customer = this._customers.find(c => c.id === id )
