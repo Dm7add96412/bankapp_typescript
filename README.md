@@ -1,4 +1,4 @@
-# TypeScript - Banking app - exercise 4
+# TypeScript - Banking app
 
 - Banking app created with the requirements mentioned below
 - Check the scripts in `package.json` and installation at the end of this document
